@@ -1,50 +1,58 @@
 
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/logo2.png'
 
 const Navbar = () => {
   return (
-    <nav className="bg-blue-500 py-4 px-6">
+    <nav className=" py-4 px-6">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="text-white font-bold text-lg">
-          Logo
+          <img className='rounded' src={logo} alt="" width="80px" height="60px" />
         </Link>
-        <ul className="flex space-x-4">
+        <ul className="font-bold text-xl text-warning flex space-x-5">
           <li>
-            <NavLink
-              exact
-              to="/"
-              className="text-white hover:text-blue-200"
-              activeClassName="text-blue-200"
-            >
+            <Link
+             to="/"
+              className="hover:text-blue-200"
+           >
               Home
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
+            <Link
               to="/toys"
-              className="text-white hover:text-blue-200"
-              activeClassName="text-blue-200"
+              className="hover:text-blue-200"
+             
             >
-              All Toys
-            </NavLink>
+             Gallery
+            </Link>
           </li>
           <li>
-            <NavLink
+            <Link
               to="/my-toys"
-              className="text-white hover:text-blue-200"
-              activeClassName="text-blue-200"
+              className="hover:text-blue-200"
+              
             >
               My Toys
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
+            <Link
               to="/blogs"
-              className="text-white hover:text-blue-200"
-              activeClassName="text-blue-200"
+              className="hover:text-blue-200"
+              
             >
               Blogs
-            </NavLink>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/blogs"
+              className="hover:text-blue-200"
+              
+            >
+              Add Toy
+            </Link>
           </li>
         </ul>
       </div>
