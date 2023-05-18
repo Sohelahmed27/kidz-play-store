@@ -1,9 +1,10 @@
-
+import errorMessage from '../assets/404 Page.jpg'
 
 const ErrorPage = () => {
   return (
     <div>
-      <h1>Error Message: 404</h1>
+      
+      <img src={errorMessage}  width="100%" alt="Error Message" className='items-center'/>
     </div>
   );
 };

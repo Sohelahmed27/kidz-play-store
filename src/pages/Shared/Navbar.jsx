@@ -1,8 +1,11 @@
 
+
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo2.png'
 
+
 const Navbar = () => {
+ 
   return (
     <nav className="bg-[#0C134F] py-4 px-6">
       <div className="container mx-auto flex justify-between items-center">
@@ -54,6 +57,25 @@ const Navbar = () => {
               Add Toy
             </Link>
           </li>
+          <li>
+            <Link
+              to="/login"
+              className="hover:text-blue-200"
+              
+            >
+              Login
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/register"
+              className="hover:text-blue-200"
+              
+            >
+              Signup
+            </Link>
+          </li>
+         
         </ul>
       </div>
     </nav>
