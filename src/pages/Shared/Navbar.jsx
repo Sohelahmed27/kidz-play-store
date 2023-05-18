@@ -4,12 +4,12 @@ import logo from '../../assets/logo2.png'
 
 const Navbar = () => {
   return (
-    <nav className=" py-4 px-6">
+    <nav className="bg-[#0C134F] py-4 px-6">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="text-white font-bold text-lg">
           <img className='rounded' src={logo} alt="" width="80px" height="60px" />
         </Link>
-        <ul className="font-bold text-xl text-warning flex space-x-5">
+        <ul className="font-bold text-xl text-white flex space-x-5">
           <li>
             <Link
              to="/"

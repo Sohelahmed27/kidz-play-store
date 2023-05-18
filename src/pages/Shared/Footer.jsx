@@ -5,7 +5,7 @@ import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-accent text-white py-6">
+    <footer className="bg-[#0C134F] text-white py-6">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
           <div className="flex items-center">
@@ -13,8 +13,8 @@ const Footer = () => {
             <span className="font-bold text-lg ml-2">Kids Zone</span>
           </div>
           <p className=" text-sm mt-4">&copy; {new Date().getFullYear()} All rights reserved</p>
-          <p className=" text-sm">Contact: example@example.com</p>
-          <p className="text-sm">Address: 123 Main Street, City, Country</p>
+          <p className=" text-sm">Contact: aliakbar.gebcu@gmail.com</p>
+          <p className="text-sm">Address: 123 Main Street, Chattogram, Bangladesh</p>
         </div>
         <div>
           <h3 className=" font-semibold text-lg">Quick Links</h3>
@@ -33,7 +33,7 @@ const Footer = () => {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-blue-500"
+              className="hover:text-blue-500"
             >
               <FaFacebook />
             </a>
@@ -41,7 +41,7 @@ const Footer = () => {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-blue-500"
+              className=" hover:text-blue-500"
             >
              <FaTwitter />
             </a>
