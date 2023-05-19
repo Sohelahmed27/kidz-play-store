@@ -100,6 +100,10 @@ const Navbar = () => {
         <div className="w-10 rounded-full">
           <img src={user.photoURL
 } />
+          <span className="absolute top-0 left-0 bg-blue text-white px-2 py-1 opacity-0 transition-opacity duration-300 ease-in-out pointer-events-none">
+           {user.displayName
+}
+          </span>
         </div>
       </label>
           }
