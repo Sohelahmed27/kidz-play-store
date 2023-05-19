@@ -1,10 +1,27 @@
 
 
+import { useContext } from 'react';
+import { toast, Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo2.png'
+import { AuthContext } from '../../Provider/AuthProvider';
 
 
 const Navbar = () => {
+  const {user, logOut} = useContext(AuthContext)
+  console.log(user)
+
+  const handleLogOut = () => {
+    toast('Logout successfully.', {
+      duration: 20000,
+      position: 'top-center'})
+     logOut()
+     
+     .then(() => {
+      
+     })
+     .catch(error => console.error(error))
+  }
  
   return (
     <nav className="bg-[#0C134F] py-4 px-6">
@@ -30,7 +47,20 @@ const Navbar = () => {
              Gallery
             </Link>
           </li>
+          
           <li>
+            <Link
+              to="/blogs"
+              className="hover:text-blue-200"
+              
+            >
+              Blogs
+            </Link>
+          </li>
+
+          {
+            user? <div className='flex space-x-5'>
+            <li>
             <Link
               to="/my-toys"
               className="hover:text-blue-200"
@@ -41,23 +71,19 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              to="/blogs"
-              className="hover:text-blue-200"
-              
-            >
-              Blogs
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/blogs"
+              to="/add"
               className="hover:text-blue-200"
               
             >
               Add Toy
             </Link>
           </li>
-          <li>
+          <div>
+          <button onClick={handleLogOut} >Logout</button>
+         
+          </div>
+            </div> :
+            <li>
             <Link
               to="/login"
               className="hover:text-blue-200"
@@ -66,7 +92,20 @@ const Navbar = () => {
               Login
             </Link>
           </li>
-          <li>
+          
+          }
+          {
+            user &&
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+          <img src={user.photoURL
+} />
+        </div>
+      </label>
+          }
+          
+          
+          {/* <li>
             <Link
               to="/register"
               className="hover:text-blue-200"
@@ -74,7 +113,7 @@ const Navbar = () => {
             >
               Signup
             </Link>
-          </li>
+          </li> */}
          
         </ul>
       </div>

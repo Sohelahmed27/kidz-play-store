@@ -1,7 +1,13 @@
+import { useState } from "react";
+import { useContext } from "react";
 import GoogleButton from "react-google-button";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+  const [error, setError] = useState(false)
+
+  const {logIn, googleSignIn} = useContext(AuthContext);
 
   const handleLogin= (event) => {
     event.preventDefault();
@@ -9,6 +15,13 @@ const Login = () => {
      const email = form.email.value;
      const password = form.password.value;
      console.log(email, password);
+
+     logIn(email, password)
+     .then(result =>{
+      const loggedUser = result.user;
+      console.log(loggedUser);
+     })
+     .catch(err =>setError(err));
 
   }
   return (
@@ -47,17 +60,28 @@ const Login = () => {
              
             </div>
             </form>
-            <p className="text-center">
+            <div className="text-center">
               <small>
                 New User? Please <Link to="/register" className="font-bold text-indigo-700">Register</Link>
               </small>
               <div className="divider">OR</div>
               <GoogleButton
-                onClick={() => {
-                  console.log("Google button clicked");
+                 onClick={() => {
+                  googleSignIn()
+                  .then(result => {
+                    const loggedUser = result.loggedUser;
+                    console.log(loggedUser)
+
+                  })
+                 .then(error => {
+                  console.error(error)
+                 })
                 }}
               />
-            </p>
+            </div>
+            {error ? (
+        <div className="m-4 text-red-600">Please provide a valid email and password!</div>
+      ) : null}
           </div>
         </div>
       </div>

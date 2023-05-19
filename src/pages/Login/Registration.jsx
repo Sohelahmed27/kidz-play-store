@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
-import { FaGoogle } from "react-icons/fa";
 import GoogleButton from "react-google-button";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Registration = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [error, setError] = useState(false)
+  const [user, setUser] = useState(null)
+  
+  const {signUp, googleSignIn} = useContext(AuthContext)
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -12,6 +18,15 @@ const Registration = () => {
     const photo = form.photo.value;
 
     console.log(email, password, photo, name);
+    signUp(email, password)
+    .then(result => {
+      const createdUser = result.user;
+      setUser(createdUser);
+      setLoggedIn(true)
+    })
+    .catch(err => {
+      setError(err);
+    })
   };
   return (
     <div className="hero min-h-screen bg-[#11468F] ">
@@ -74,9 +89,9 @@ const Registration = () => {
                 />
               </div>
             </form>
-            <p className="text-center">
+            <div className="text-center">
               <small>
-                Already have an account? Please{" "}
+                Already have an account? Please
                 <Link to="/login" className="text-primary font-bold">
                   Login
                 </Link>
@@ -84,10 +99,24 @@ const Registration = () => {
               <div className="divider">OR</div>
               <GoogleButton
                 onClick={() => {
-                  console.log("Google button clicked");
+                  googleSignIn()
+                  .then(result => {
+                    const createdUser = result.user;
+                    setUser(createdUser)
+
+                  })
+                 .then(error => {
+                  console.error(error)
+                 })
                 }}
               />
-            </p>
+                {loggedIn ? (  <div className="text-green-500 m-4">Registered successfully!</div>
+        
+      ) : null}
+                {error ? (
+        <div className="m-4 text-red-600">Please provide a valid email and password!</div>
+      ) : null}
+            </div>
           </div>
         </div>
       </div>
