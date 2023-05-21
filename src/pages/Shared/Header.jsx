@@ -1,13 +1,13 @@
 
 
 import { useContext } from 'react';
-import { toast, Toaster } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo2.png'
 import { AuthContext } from '../../Provider/AuthProvider';
 
 
-const Navbar = () => {
+const Header = () => {
   const {user, logOut} = useContext(AuthContext)
   console.log(user)
 
@@ -125,4 +125,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;

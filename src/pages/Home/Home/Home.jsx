@@ -1,5 +1,8 @@
+
 import banner from "../../../assets/b2.jpg";
-import Tabs from "../Tabs";
+import Categories from "../../Categories";
+import Store from "../../Store";
+// import Tabs from "../Tabs";
 const Home = () => {
   return (
     <div>
@@ -18,7 +21,11 @@ const Home = () => {
           <div className="bg-[url('https://ibb.co/R9Bskdn')]"></div>
         </div>
       </div>
-      <Tabs></Tabs>
+     
+     {/* ...tab... */}
+    <Categories></Categories>
+    <Store></Store>
+
      
     </div>
   );
