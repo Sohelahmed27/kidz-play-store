@@ -70,6 +70,15 @@ const Header = () => {
               My Toys
             </Link>
           </li>
+            <li>
+            <Link
+              to="/allToy"
+              className="hover:text-blue-200"
+              
+            >
+              All Toy
+            </Link>
+          </li>
           <li>
             <Link
               to="/addProducts"
