@@ -1,35 +1,41 @@
 import { useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import EngineeringToy from "./toyTypes/EngineeringToy";
+import LanguageToys from "./toyTypes/LanguageToys";
+import MathToys from "./toyTypes/MathToys";
 
 const Categories = () => {
   const [engineerings, setEngineerings] = useState([])
   const [maths, setMaths] = useState([])
   const [languages, setLanguages] = useState([])
   const handleEngineeringToys =()=> {
-    console.log("Engine clicked")
+   
     fetch('http://localhost:3000/toys/engineering')
     .then(response=>response.json())
     .then(data=>setEngineerings(data))
   }
   
   const handleLanguageToys =()=> {
-    console.log("Language clicked")
+    fetch('http://localhost:3000/toys/language')
+    .then(response=>response.json())
+    .then(data=> setLanguages(data))
   }
   
   const handleMathToys=()=> {
-    console.log("Math clicked")
+    fetch('http://localhost:3000/toys/math')
+    .then(response=>response.json())
+    .then(data=> setMaths(data))
   }
    
   return (
     <div>
-          <h1 className="text-center text-4xl font-bold mt-10 mb-5">Choose By Category</h1>
+          <h1 className="text-center text-5xl font-bold mt-10 mb-5">Choose By Category</h1>
           <p className="text-center text-xl  mt-5 mb-5">Unlock the potential of child with our educational toys</p>
-      <Tabs className="mx-auto">
+      <Tabs className="mx-auto my-10">
         <TabList className="tabs tabs-boxed items-center justify-center text-xl text-bold ">
-          <Tab onClick={handleEngineeringToys} className="tab text-xl text-white  hover:text-purple-600 bg-[#0C134F]">Engineering Toys</Tab>
-          <Tab onClick={handleLanguageToys} className="tab ">Language  </Tab>
-          <Tab onClick={handleMathToys} className="tab">Math Toys</Tab>
+          <Tab onClick={handleEngineeringToys} className="tab tab-active text-xl text-white  hover:bg-primary bg-[#253090]">Engineering Toys</Tab>
+          <Tab onClick={handleLanguageToys} className="tab mx-4 text-xl text-white  hover:bg-primary bg-[#253090]">Language Toys </Tab>
+          <Tab onClick={handleMathToys} className="tab text-xl text-white  hover:bg-primary bg-[#253090]">Math Toys</Tab>
         </TabList>
 
         <TabPanel>
@@ -41,37 +47,19 @@ const Categories = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="card w-96 bg-base-100 shadow-xl">
-            <figure>
-              <img
-                src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                alt="Shoes"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Bag!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
+        <div className="container grid grid-cols-1 md:grid-cols-3 mx-auto">
+            {
+              languages.map(language => <LanguageToys key={language._id} language={language}></LanguageToys>)
+
+            }
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="card w-96 bg-base-100 shadow-xl">
-            <figure>
-              <img
-                src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                alt="Shoes"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">BOOK!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
+        <div className="container grid grid-cols-1 md:grid-cols-3 mx-auto">
+            {
+              maths.map(math => <MathToys key={math._id} math={math}></MathToys>)
+
+            }
           </div>
         </TabPanel>
       </Tabs>

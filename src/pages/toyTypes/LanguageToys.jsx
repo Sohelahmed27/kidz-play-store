@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 
 
 const LanguageToys = ({language}) => {
   const {name, photo, price, quantity, category} = language;
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card w-96  bg-base-100 shadow-xl mt-5" style={{'height':'500px'}}>
     <figure>
       <img
         src={photo}
