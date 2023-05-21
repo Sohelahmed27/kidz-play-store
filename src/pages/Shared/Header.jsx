@@ -57,6 +57,15 @@ const Header = () => {
               Blog
             </Link>
           </li>
+          <li>
+            <Link
+              to="/addProducts"
+              className="hover:text-blue-200"
+              
+            >
+              Add Products
+            </Link>
+          </li>
 
           {
             user? <div className='flex space-x-5'>

@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
+import AddProducts from "../pages/AddProducts";
 import AddToys from "../pages/AddToys";
 import Blog from "../pages/Blog";
 import Categories from "../pages/Categories";
@@ -38,6 +39,10 @@ element:<Categories></Categories>
       {
         path: "/add",
         element:<AddToys></AddToys>
+      },
+      {
+        path: "/addProducts",
+        element:<AddProducts></AddProducts>
       }
     ],
 

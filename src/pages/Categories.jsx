@@ -33,8 +33,8 @@ const Categories = () => {
           <p className="text-center text-xl  mt-5 mb-5">Unlock the potential of child with our educational toys</p>
       <Tabs className="mx-auto my-10">
         <TabList className="tabs tabs-boxed items-center justify-center text-xl text-bold ">
-          <Tab onClick={handleEngineeringToys} className="tab tab-active text-xl text-white  hover:bg-primary bg-[#253090]">Engineering Toys</Tab>
-          <Tab onClick={handleLanguageToys} className="tab mx-4 text-xl text-white  hover:bg-primary bg-[#253090]">Language Toys </Tab>
+          <Tab onClick={handleEngineeringToys} className="tab  text-xl text-white  hover:bg-primary bg-[#253090]">Engineering Toys</Tab>
+          <Tab onClick={handleLanguageToys} className="tab tab-active mx-4 text-xl text-white  hover:bg-primary bg-[#253090]">Language Toys </Tab>
           <Tab onClick={handleMathToys} className="tab text-xl text-white  hover:bg-primary bg-[#253090]">Math Toys</Tab>
         </TabList>
 
@@ -47,7 +47,7 @@ const Categories = () => {
           </div>
         </TabPanel>
         <TabPanel>
-        <div className="container grid grid-cols-1 md:grid-cols-3 mx-auto">
+        <div className="container grid grid-cols-1 md:grid-cols-3 mx-auto tab-active">
             {
               languages.map(language => <LanguageToys key={language._id} language={language}></LanguageToys>)
 
