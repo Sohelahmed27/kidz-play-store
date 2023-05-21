@@ -57,15 +57,7 @@ const Header = () => {
               Blog
             </Link>
           </li>
-          <li>
-            <Link
-              to="/addProducts"
-              className="hover:text-blue-200"
-              
-            >
-              Add Products
-            </Link>
-          </li>
+         
 
           {
             user? <div className='flex space-x-5'>
@@ -80,11 +72,11 @@ const Header = () => {
           </li>
           <li>
             <Link
-              to="/add"
+              to="/addProducts"
               className="hover:text-blue-200"
               
             >
-              Add Toy
+              Add Products
             </Link>
           </li>
           <div>
