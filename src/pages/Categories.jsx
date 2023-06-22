@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import EngineeringToy from "./toyTypes/EngineeringToy";
 import LanguageToys from "./toyTypes/LanguageToys";
@@ -25,6 +25,12 @@ const Categories = () => {
       .then((response) => response.json())
       .then((data) => setMaths(data));
   };
+  
+  useEffect(()=>{
+    fetch("https://kids-zone-server-murex.vercel.app/toys/engineering")
+    .then((response) => response.json())
+    .then((data) => setEngineerings(data));
+  },[])
 
   return (
     <div>

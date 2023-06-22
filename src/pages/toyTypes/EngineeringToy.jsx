@@ -17,7 +17,7 @@ const EngineeringToy = ({engineer}) => {
       <p>Quantity: {quantity}</p>
       <p>Category: {category}</p>
       <div className="card-actions justify-end">
-        <button className="btn btn-primary">Buy Now</button>
+        <button className="btn btn-primary">Details</button>
       </div>
     </div>
   </div>

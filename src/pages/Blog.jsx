@@ -3,7 +3,7 @@ import fq from "../assets/fq.jpg";
 
 const Blog = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-[#11468F]">
       <div>
         <img src={fq} alt="" style={{width: '100%', height: '400px'}}/>
       </div>

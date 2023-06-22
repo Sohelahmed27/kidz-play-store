@@ -7,10 +7,43 @@ const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
 
+  const handleDelete = id => {
+    const proceed = confirm('Are You want to delete')
 
-  useEffect(() => {
-    fetch('')
-  })
+    if (proceed) {
+       fetch(`http://localhost:3000/myToys/${id}`,
+       { method: 'DELETE'})
+       .then(res => res.json())
+       .then((data) =>{
+        console.log(data);
+        if(data.deletedCount > 0){
+          const remaining =toys.filter(toys._id !== id)
+          setToys(remaining)
+        }
+       })
+    }
+  }
+ const handleUpdate = (id) => {
+   fetch(`http://localhost:3000/myToys/${id}`),{
+    method:'PATCH', 
+    headers: {'content-type': 'application/json'},
+    body: JSON.stringify({status:'confirm'})
+   }
+   .then(response =>response.json())
+   .then(data => {
+    console.log(data)
+    if(data.modifiedCount > 0) {
+      const remaining = toys.filter(toy=>toys._id !== id)
+      const updated = toys.find(toy=>toy._id == id)
+      updated.status = 'confirm'
+      const newToys =[updated,  ...remaining]
+      setToys(newToys)
+    }
+
+   })
+ }
+
+ 
 
   useEffect(() => {
     fetch(`https://kids-zone-server-murex.vercel.app/myToys/${user?.email}`)
@@ -69,10 +102,10 @@ const MyToys = () => {
                 <td>${toy.price}</td>
                 <td>{toy.quantity}</td>
                 <td>
-                  <button className="btn btn-outline btn-info">Update</button>
+                  <button onClick={()=>handleUpdate(toy._id)} className="btn btn-outline btn-info">Update</button>
                 </td>
                 <td>
-                  <button className="btn btn-outline btn-info">Delete</button>
+                  <button onClick={()=>handleDelete(toy._id)} className="btn btn-outline btn-info">Delete</button>
                 </td>
               </tr>
             ))}
